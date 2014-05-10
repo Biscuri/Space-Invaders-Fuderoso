@@ -7,12 +7,8 @@ import javax.swing.JFrame;
 
 import util.DataBase;
 
+@SuppressWarnings("serial")
 public class Janela extends JFrame {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 01;
-	
 	int tamanhoX;
 	int tamanhoY;
 	protected DataBase dataBase;
@@ -40,6 +36,7 @@ public class Janela extends JFrame {
 		menu = new Menu(this);
 		mundo = new Mundo(this, dataBase);
 		placar = new Placar(this, dataBase);	
+		terminouFase();
 	}
 
 	public void menu(){
@@ -52,13 +49,12 @@ public class Janela extends JFrame {
 		add(BorderLayout.CENTER, mundo);
 		add(BorderLayout.EAST, placar);
 		setVisible(true);
-	}
-	
+	}	
 
 	public void atualizaPlacar() {
 		placar.atualiza();
 	}
-	
+
 	public void atualizaResolucao(int tipo){
 		dataBase.setTipo(tipo);
 		if (tipo == 1){
@@ -81,6 +77,11 @@ public class Janela extends JFrame {
 
 	public void atualizaDificuldade(int dificuldade) {
 		dataBase.setNivel(dificuldade);
+	}
+	
+	public void terminouFase(){
+		new Hangar(mundo, dataBase);
+		dataBase.incrementaDias();
 	}
 	
 	public void sair(){

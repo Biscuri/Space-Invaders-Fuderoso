@@ -23,8 +23,8 @@ public class MenuDificuldade extends JDialog {
 		JDialog mensagemRetorno = new JDialog();
 		JPanel painel = new JPanel(new GridLayout(15, 1));
 
-		final JRadioButton r1 = new JRadioButton("NOOB", false);
-		final JRadioButton r2 = new JRadioButton("NORMAL", true);
+		final JRadioButton r1 = new JRadioButton("NOOB", true);
+		final JRadioButton r2 = new JRadioButton("NORMAL", false);
 		final JRadioButton r3 = new JRadioButton("HARD", false);
 		final JRadioButton r4 = new JRadioButton("NIGHTMARE", false);
 
@@ -85,7 +85,7 @@ public class MenuDificuldade extends JDialog {
 		mensagemRetorno.setPreferredSize(tamanhoJanelasExtras);
 		mensagemRetorno.setLocation((int) (mestre.getWidth() * 0.55), (int)(mestre.getHeight() * 0.3));
 		mensagemRetorno.pack();
-                mensagemRetorno.setModal(true);
+		mensagemRetorno.setModal(true);
 		mensagemRetorno.setResizable(false);
 		mensagemRetorno.setVisible(true);
 	}

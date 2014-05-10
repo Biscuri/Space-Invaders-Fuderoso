@@ -1,8 +1,5 @@
 package util;
 
-import model.Alien;
-import model.Nave;
-
 
 public class Colidivel {
 	private int x;
@@ -11,6 +8,8 @@ public class Colidivel {
 	private int moveY;
 	private int limX;
 	private int limY;
+	private int tamX;
+	private int tamY;
 	private boolean colidiu;
 
 	public Colidivel(int x, int y, int limX, int limY){
@@ -20,28 +19,15 @@ public class Colidivel {
 		this.limY = limY;
 	}
 	
-	public boolean colidiu(Colidivel obj){
-            if(obj instanceof Alien){
-		Alien objAux = (Alien) obj;
-                if(x >= objAux.getX() && x <= objAux.getX() + objAux.getTamanhoX()){
-			if(y >= objAux.getY() && y <= objAux.getY() + objAux.getTamanhoY() - 5){
+	public boolean colidiu(Colidivel alien){
+		if(x >= alien.getX() && x <= alien.getX() + alien.getTamanhoX()){
+			if(y >= alien.getY() && y <= alien.getY() + alien.getTamanhoY() - 5){
 				return true;
 			}
 		}
-	
-            }
-            
-            else if (obj instanceof Nave){
-                Nave objAux = (Nave) obj;
-		if(x >= objAux.getX() && x <= objAux.getX() + objAux.getTamanhoX()){
-			if(y >= objAux.getY() && y <= objAux.getY() + objAux.getTamanhoY() - 5){
-				return true;
-			}
-		}
-            }
 		return false;
 	}
-	
+
 	public boolean isColidiu(){
 		return colidiu;
 	}
@@ -93,5 +79,20 @@ public class Colidivel {
 	public void setLimY(int limY) {
 		this.limY = limY;
 	}
-	
+
+	public int getTamanhoX() {
+		return tamX;
+	}
+
+	public void setTamanhoX(int tamX) {
+		this.tamX = tamX;
+	}
+
+	public int getTamanhoY() {
+		return tamY;
+	}
+
+	public void setTamanhoY(int tamy) {
+		this.tamY = tamy;
+	}
 }

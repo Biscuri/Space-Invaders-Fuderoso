@@ -36,7 +36,7 @@ public class MenuResolucao extends JDialog {
 		
 		JButton confirma = new JButton ("Confirmar");
 
-		painel.add(new JLabel("Resolucaoo"));
+		painel.add(new JLabel("Resolução"));
 		painel.add(r1);
 		painel.add(r2);
 		painel.add(new JLabel(""));
@@ -69,12 +69,13 @@ public class MenuResolucao extends JDialog {
 		
 		painel.add(confirma);
 		
+		mensagemRetorno.add(painel);
 		
 		Dimension tamanhoJanelasExtras = new Dimension(mestre.getWidth() / 2, mestre.getHeight() / 2);
 		mensagemRetorno.setPreferredSize(tamanhoJanelasExtras);
 		mensagemRetorno.setLocation((int) (mestre.getWidth() * 0.55),(int) (mestre.getHeight() * 0.3));
-		mensagemRetorno.add(painel);
 		mensagemRetorno.pack();  
+		mensagemRetorno.setModal(true);
 		mensagemRetorno.setResizable(false);
 		mensagemRetorno.setVisible(true);
 	}

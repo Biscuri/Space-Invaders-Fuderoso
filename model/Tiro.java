@@ -4,18 +4,12 @@ import util.Colidivel;
 
 public class Tiro extends Colidivel{
 	private int velocidade = -2;
-	private boolean atirou;
 	private boolean ativo;
 	
 	public Tiro(int x, int y, int limX, int limY, int direcao){
 		super(x, y, limX, limY);
-		atirou = true;
 		ativo = true;
 		velocidade = velocidade*direcao;
-	}
-
-	public boolean isAtirou() {
-		return atirou;
 	}
 
 	// metodo para animar o tiro
@@ -25,10 +19,10 @@ public class Tiro extends Colidivel{
 
 		// se o tiro atingir a posição final da tela ele sera apagado
 		if (getY() < 0 || getY() > getLimY() || !ativo ) {
-			atirou = false;
+			ativo = false;
 		}
 	}
-	
+
 	public boolean isAtivo(){
 		return ativo;
 	}

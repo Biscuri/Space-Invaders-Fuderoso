@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -10,8 +11,6 @@ import util.Colidivel;
 import controller.NaveKeyListener;
 
 public class Nave extends Colidivel{
-	private final int tamanhoX;
-	private final int tamanhoY;
 	private int tipo;
 	private int forcaTiro;
 	private int qtdArmas;
@@ -26,10 +25,10 @@ public class Nave extends Colidivel{
 	
 	/**
 	 * Construtor do objeto Nave
-	 * @param tipo referente ao tipo da resolucao
+	 * @param tipo referente ao tipo da resolução
 	 * @param vidas quantidade de vidas
-	 * @param posX posicaoo atual em X
-	 * @param posY posicao atual em Y
+	 * @param posX posição atual em X
+	 * @param posY posição atual em Y
 	 * @param limX limite da tela em X
 	 * @param limY limite da tela em Y
 	 */
@@ -44,8 +43,8 @@ public class Nave extends Colidivel{
 		naveImagem = naveIcone.getImage();
 		
 		//Definindo tamanho da Nave;
-		tamanhoX = naveIcone.getIconWidth();
-		tamanhoY = naveIcone.getIconHeight();
+		super.setTamanhoX(naveIcone.getIconWidth());
+		super.setTamanhoY(naveIcone.getIconHeight());
 		
 		//Criando conjunto de tiros
 		tiros = new ArrayList<Tiro>();
@@ -53,13 +52,13 @@ public class Nave extends Colidivel{
 		//Criando espectador de eventos
 		naveEvento = new NaveKeyListener(this);
 		
-		//definindo potï¿½ncia do tiro
-		forcaTiro = 2;
-		qtdArmas = 1;
+		//definindo potência do tiro
+		forcaTiro = 4;
+		qtdArmas = 3;
 	}
 	
 	/**
-	 * Mï¿½todo que faz a movimentaï¿½ï¿½o da nave, utilizando os atributos da super classe
+	 * Método que faz a movimentação da nave, utilizando os atributos da super classe
 	 * Colidivel
 	 */
 	public void moveNave(){
@@ -68,25 +67,25 @@ public class Nave extends Colidivel{
 	}
 	
 	/**
-	 * Mï¿½todo que da o comando de atirar
+	 * Método que da o comando de atirar
 	 */
 	public void atira(){
 		if(!(atirou)){
 			//Definindo quantos tiros a nave dispara por vez
 			if(qtdArmas == 3){
-				tiros.add(new Tiro(getX() + (tamanhoX/4), getY() + (tamanhoY/2), getLimX(), getLimY(), 1));
+				tiros.add(new Tiro(getX() + (getTamanhoX()/4), getY() + (getTamanhoY()/2), getLimX(), getLimY(), 1));
 
-				tiros.add(new Tiro(getX() + (int)(tamanhoX*0.48), getY(), getLimX(), getLimY(), 1));
+				tiros.add(new Tiro(getX() + (int)(getTamanhoX()*0.48), getY(), getLimX(), getLimY(), 1));
 
-				tiros.add(new Tiro(getX() + (int)(tamanhoX*0.72), getY() + (tamanhoY/2), getLimX(), getLimY(), 1));
+				tiros.add(new Tiro(getX() + (int)(getTamanhoX()*0.72), getY() + (getTamanhoY()/2), getLimX(), getLimY(), 1));
 			}
 			else if(qtdArmas == 2){
-				tiros.add(new Tiro(getX() + (tamanhoX/4), getY() + (tamanhoY/2), getLimX(), getLimY(), 1));
+				tiros.add(new Tiro(getX() + (getTamanhoX()/4), getY() + (getTamanhoY()/2), getLimX(), getLimY(), 1));
 				
-				tiros.add(new Tiro(getX() + (int)(tamanhoX*0.72), getY() + (tamanhoY/2), getLimX(), getLimY(), 1));
+				tiros.add(new Tiro(getX() + (int)(getTamanhoX()*0.72), getY() + (getTamanhoY()/2), getLimX(), getLimY(), 1));
 			}
 			else{
-				tiros.add(new Tiro(getX() + (int)(tamanhoX*0.48), getY(), getLimX(), getLimY(), 1));
+				tiros.add(new Tiro(getX() + (int)(getTamanhoX()*0.48), getY(), getLimX(), getLimY(), 1));
 			}
 		}
 	}
@@ -101,14 +100,6 @@ public class Nave extends Colidivel{
 
 	public ArrayList<Tiro> getTiro() {
 		return tiros;
-	}
-
-	public int getTamanhoX() {
-		return tamanhoX;
-	}
-
-	public int getTamanhoY() {
-		return tamanhoY;
 	}
 
 	public Image getNaveImagem() {
@@ -137,6 +128,21 @@ public class Nave extends Colidivel{
 	
 	public int getForcaTiro(){
 		return forcaTiro;
+	}
+	
+	public Color getCorTiro(){
+		if(forcaTiro == 1){
+			return Color.GREEN;
+		}
+		else if(forcaTiro== 2){
+			return Color.YELLOW;	
+		}
+		else if(forcaTiro == 3){
+			return Color.ORANGE;	
+		}
+		else {
+			return Color.RED;	
+		}	
 	}
 	
 	public void setQtdArmas(int qtdArmas){

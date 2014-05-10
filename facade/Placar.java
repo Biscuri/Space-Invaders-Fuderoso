@@ -38,7 +38,7 @@ public class Placar extends JPanel {
 		add(new JLabel(base.getNomeJogador()));
 		add(new JLabel("--------------------------------------------------"));
 
-		add(new JLabel("Pontuacao: "));
+		add(new JLabel("Pontuação: "));
 		add(pontuacao);
 		add(new JLabel("--------------------------------------------------"));
 

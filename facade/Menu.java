@@ -9,18 +9,14 @@ import javax.swing.JPanel;
 
 import controller.MenuKeyListener;
 
+@SuppressWarnings("serial")
 public class Menu extends JPanel {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
 	protected Janela mestre;
 	protected MenuKeyListener menuEvento;
 	
-	protected JButton inicio = new JButton("Comecar");
+	protected JButton inicio = new JButton("Começar");
 	protected JButton dificuldade = new JButton("Dificuldade");
-	protected JButton resolucao = new JButton("Resolucao");
+	protected JButton resolucao = new JButton("Resolução");
 	protected JButton creditos = new JButton("Creditos");
 	protected JButton sair = new JButton("Sair");
 

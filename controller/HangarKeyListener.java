@@ -7,17 +7,14 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 
-import facade.Janela;
-import facade.Menu;
+import util.DataBase;
 
-public class MenuKeyListener  extends MouseAdapter implements ActionListener{
+public class HangarKeyListener  extends MouseAdapter implements ActionListener{
 	
-	private Janela mestre;
-	private Menu menu;
+	private DataBase dataBase;
 	
-	public MenuKeyListener(Janela mestre, Menu menu){
-		this.mestre = mestre;
-		this.menu = menu;
+	public HangarKeyListener(DataBase dataBase){
+		this.dataBase = dataBase;
 	}
 	
 	@Override
@@ -25,27 +22,22 @@ public class MenuKeyListener  extends MouseAdapter implements ActionListener{
 		JButton auxBotao = (JButton) e.getSource();
 		String func = auxBotao.getText();
 		
-		if(func.equals("Começar")){
-			mestre.comeca();
-			mestre.remove(menu);
+		 if(func.equals("Mudar Nome")){
+			if(dataBase.getPontuacao() >= dataBase.getLoja(1))
+				dataBase.comprar(func);
 		}
-		
-		else if(func.equals("Dificuldade")){
-			menu.dificuldade();
+		 else if(func.equals("Vida")){
+			if(dataBase.getPontuacao() >= dataBase.getLoja(2))
+				dataBase.comprar(func);
 		}
-		
-		else if(func.equals("Resolução")){
-			menu.resolucao();
+		else if(func.equals("Mais Armas")){
+			if(dataBase.getPontuacao() >= dataBase.getLoja(3))
+				dataBase.comprar(func);
 		}
-		
-		else if(func.equals("Creditos")){
-			menu.creditos();
-		}
-		
-		else {
-			mestre.sair();
-		}
-		
+		else if(func.equals("Melhorar tiro")){
+			if(dataBase.getPontuacao() >= dataBase.getLoja(4))
+				dataBase.comprar(func);
+		}		
 	}
 	
 	@Override

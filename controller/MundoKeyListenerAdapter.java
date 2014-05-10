@@ -6,19 +6,29 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
-import javax.swing.JPanel;
-
 import model.Nave;
 import model.Tiro;
+import facade.Janela;
+import facade.Mundo;
 
 public class MundoKeyListenerAdapter extends KeyAdapter implements ActionListener{
 	private Nave nave;
-	private JPanel mundo;
+	private Mundo mundo;
+	private Janela mestre;
 	
-	public MundoKeyListenerAdapter(Nave nave, JPanel mundo) {
+	public MundoKeyListenerAdapter(Nave nave, Mundo mundo, Janela mestre) {
 		super();
 		this.mundo = mundo;
 		this.nave = nave;
+		this.mestre = mestre;
+	}
+	
+	public void matouAlien(){
+		mestre.atualizaPlacar();
+	}
+	
+	public void terminouFase(){
+		mestre.terminouFase();
 	}
 
 	public void keyPressed(KeyEvent e) {
@@ -34,19 +44,19 @@ public class MundoKeyListenerAdapter extends KeyAdapter implements ActionListene
 		// cria array list que recebe o array list de tiro
 		ArrayList<Tiro> tirosNave = nave.getTiro();
 
-		// Tiro se move ate ser destruido ou que saia da tela
+		// Tiro se move até ser destruido ou que saia da tela
 		for (int i = 0; i < tirosNave.size(); i++) {
 
 			// Recebe um objeto Tiro do array de tiros da Nave
 			Tiro tiro = (Tiro) tirosNave.get(i);
 
-			// verifica se o tiro nao esta na posicao final da tela
-			if (tiro.isAtirou()){
-				// chama mï¿½todo para mover o tiro
+			// verifica se o tiro nao esta na posição final da tela
+			if (tiro.isAtivo()){
+				// chama método para mover o tiro
 				tiro.moveTiro();
 			} 
 			else {
-				// se o tiro estiver na posicao final da tela ele remove o tiro
+				// se o tiro estiver na posição final da tela ele remove o tiro
 				// do list
 				tirosNave.remove(i);
 			}
