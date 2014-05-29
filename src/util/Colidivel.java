@@ -1,6 +1,9 @@
 package util;
 
-
+/**
+ * Classe que implementa todos os metodos necessarios para a colisao dos objetos
+ * @author Alberto Manoel, Leno Oliveira, Lucas do Carmo
+ */
 public class Colidivel {
 	private int x;
 	private int y;
@@ -10,22 +13,31 @@ public class Colidivel {
 	private int limY;
 	private int tamX;
 	private int tamY;
-	private int ux;
-	private int uy;
 	private boolean colidiu;
-
-	public Colidivel(int x, int y, int limX, int limY, int ux, int uy){
+        /**
+         * Construtor da classe
+         * @param x posicao X
+         * @param y Posicao Y
+         * @param limX limite da tela em X
+         * @param limY  limite da tela em Y
+         */
+	public Colidivel(int x, int y, int limX, int limY){
 		this.x = x;
 		this.y = y;
 		this.limX = limX;
 		this.limY = limY;
-		this.ux = ux;
-		this.uy = uy;
 	}
-	
+	/**
+         * Metodo que verifica se houve colisao
+         * @param alien Alien a ser verificada a colisao
+         * @return true se houve colisao,false se nao houve colisao
+         */
 	public boolean colidiu(Colidivel alien){
-		if(x >= alien.getX() && x <= alien.getX() + alien.getTamanhoX()){
-			if(y >= alien.getY() && y <= alien.getY() + alien.getTamanhoY() - 5){
+		int alienX = alien.getX();
+		int alienY = alien.getY();
+		
+		if(x >= alienX && x <= alienX + alien.getTamanhoX()){
+			if(y >= alienY && y <= alienY + alien.getTamanhoY() - 5){
 				return true;
 			}
 		}

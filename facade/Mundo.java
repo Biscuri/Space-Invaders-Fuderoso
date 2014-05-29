@@ -48,7 +48,7 @@ public class Mundo extends JPanel {
 
 		// Verifica o tipo dos sprites
 		if (dataBase.getTipo() == 1) {
-			nave = new Nave(dataBase.getTipo(), this.getWidth() / 2, this.getHeight() - 100, this.getWidth(), this.getHeight());
+			nave = new Nave(dataBase.getTipo(), this.getWidth() - 50*mestre.uy, this.getHeight() - 80*mestre.ux, this.getWidth(), this.getHeight());
 		} 
 		else {
 			nave = new Nave(dataBase.getTipo(), this.getWidth() / 2, this.getHeight() - 55, this.getWidth(), this.getHeight());

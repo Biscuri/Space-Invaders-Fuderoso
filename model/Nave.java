@@ -14,6 +14,7 @@ public class Nave extends Colidivel{
 	private int tipo;
 	private int forcaTiro;
 	private int qtdArmas;
+	private int speed;
 	
 	private Image naveImagem;
 	private ImageIcon naveIcone;
@@ -32,8 +33,8 @@ public class Nave extends Colidivel{
 	 * @param limX limite da tela em X
 	 * @param limY limite da tela em Y
 	 */
-	public Nave(int tipo, int posX, int posY, int limX, int limY){
-		super(posX, posY, limX, limY);
+	public Nave(int tipo, int posX, int posY, int limX, int limY, int ux, int uy){
+		super(posX, posY, limX, limY, ux, uy);
 
 		//Definindo tipo da Nave
 		this.tipo = tipo;
